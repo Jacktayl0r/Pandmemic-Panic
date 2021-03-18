@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://Label2.gd" type="Script" id=2]
+[ext_resource path="res://GAme over (1).png" type="Texture" id=3]
+[ext_resource path="res://Gameover.wav" type="AudioStream" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GAme over (1)" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 45.0
+margin_top = 775.0
+margin_right = 685.0
+margin_bottom = 789.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 22.0532, -7.47011 )
+text = "hello"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Label2"]
+process_mode = 0
+wait_time = 3.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="timeout" from="Label2/Timer" to="." method="_on_Timer_timeout"]
